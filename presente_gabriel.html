@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Para o Gabriel 💚</title>
+<link href="https://fonts.googleapis.com/css2?family=Circular+Std:wght@400;700;900&family=DM+Sans:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --green: #1DB954;
+  --green-dim: #1aa34a;
+  --green-glow: rgba(29,185,84,0.25);
+  --bg: #121212;
+  --bg2: #181818;
+  --bg3: #282828;
+  --bg4: #333333;
+  --text: #FFFFFF;
+  --text2: #B3B3B3;
+  --text3: #535353;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 4px; }
+
+/* ── SIDEBAR ── */
+.sidebar {
+  position: fixed;
+  left: 0; top: 0; bottom: 80px;
+  width: 240px;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px;
+  z-index: 100;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+  padding: 0 8px;
+}
+
+.logo-icon {
+  width: 32px; height: 32px;
+  background: var(--green);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+}
+
+.logo-text {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: -0.3px;
+}
+
+.nav-section {
+  background: var(--bg2);
+  border-radius: 8px;
+  padding: 8px;
+  margin-bottom: 8px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text2);
+  cursor: pointer;
+  transition: all 0.15s;
+  text-decoration: none;
+}
+
+.nav-item:hover, .nav-item.active {
+  color: var(--text);
+  background: rgba(255,255,255,0.07);
+}
+
+.nav-item.active { color: var(--text); }
+
+.nav-icon {
+  width: 28px; height: 28px;
+  background: var(--bg3);
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.nav-icon.green { background: var(--green); }
+.nav-icon.pink  { background: #E91E8C; }
+.nav-icon.heart { background: #C62828; }
+
+.sidebar-playlist-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text3);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  padding: 16px 12px 8px;
+}
+
+.playlist-item {
+  padding: 8px 12px;
+  font-size: 13px;
+  color: var(--text2);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: color 0.15s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.playlist-item:hover { color: var(--text); }
+.playlist-item.active { color: var(--green); }
+
+/* ── MAIN ── */
+.main {
+  margin-left: 240px;
+  margin-bottom: 80px;
+  min-height: calc(100vh - 80px);
+}
+
+/* ── TOPBAR ── */
+.topbar {
+  position: sticky;
+  top: 0;
+  background: rgba(18,18,18,0.9);
+  backdrop-filter: blur(20px);
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 90;
+}
+
+.nav-arrows {
+  display: flex;
+  gap: 8px;
+}
+
+.arrow-btn {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.6);
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  transition: background 0.15s;
+}
+.arrow-btn:hover { background: rgba(255,255,255,0.1); }
+
+.user-pill {
+  background: var(--bg3);
+  border-radius: 50px;
+  padding: 4px 8px 4px 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  transition: background 0.15s;
+}
+.user-pill:hover { background: var(--bg4); }
+
+.user-avatar {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--green);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+  font-weight: 900;
+  color: #000;
+}
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(180deg, #1a3a2a 0%, #121212 100%);
+  padding: 64px 32px 32px;
+  display: flex;
+  align-items: flex-end;
+  gap: 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 0%, rgba(29,185,84,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-cover {
+  width: 192px; height: 192px;
+  background: linear-gradient(135deg, #1DB954 0%, #0d6e35 50%, #074422 100%);
+  border-radius: 4px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 72px;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.6);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.hero-cover input[type="file"] {
+  position: absolute; inset: 0;
+  opacity: 0; cursor: pointer;
+  width: 100%; height: 100%;
+}
+
+.hero-cover img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  position: absolute; inset: 0;
+  border-radius: 4px;
+}
+
+.hero-cover .cover-hint {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+  font-size: 13px;
+  color: white;
+  border-radius: 4px;
+  pointer-events: none;
+}
+.hero-cover:hover .cover-hint { opacity: 1; }
+
+.hero-meta { position: relative; z-index: 1; }
+
+.hero-type {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+.hero-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: 900;
+  letter-spacing: -2px;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.hero-desc {
+  font-size: 14px;
+  color: var(--text2);
+  margin-bottom: 16px;
+  line-height: 1.5;
+  max-width: 480px;
+}
+
+.hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text2);
+}
+
+.hero-stats .dot { color: var(--text3); }
+
+.hero-stats .highlight { color: var(--text); font-weight: 700; }
+
+/* ── CONTROLS ── */
+.controls-bar {
+  padding: 24px 32px 16px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.play-btn {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--green);
+  border: none;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  color: #000;
+  transition: all 0.15s;
+  box-shadow: 0 8px 24px rgba(29,185,84,0.4);
+  flex-shrink: 0;
+}
+.play-btn:hover { transform: scale(1.06); background: #1ed760; }
+
+.heart-btn {
+  width: 32px; height: 32px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 22px;
+  color: var(--green);
+  transition: transform 0.15s;
+}
+.heart-btn:hover { transform: scale(1.15); }
+
+.more-btn {
+  width: 32px; height: 32px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: var(--text2);
+  transition: color 0.15s;
+}
+.more-btn:hover { color: var(--text); }
+
+/* ── SECTIONS ── */
+.content-section {
+  padding: 0 32px 40px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+}
+
+.see-all {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text2);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.see-all:hover { color: var(--text); }
+
+/* ── TRACK LIST (Memories) ── */
+.track-header {
+  display: grid;
+  grid-template-columns: 40px 1fr 200px 80px;
+  padding: 0 16px 8px;
+  font-size: 12px;
+  color: var(--text3);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  margin-bottom: 8px;
+}
+
+.track-row {
+  display: grid;
+  grid-template-columns: 40px 1fr 200px 80px;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.track-row:hover { background: rgba(255,255,255,0.07); }
+.track-row:hover .track-num { display: none; }
+.track-row:hover .track-play-hover { display: flex !important; }
+.track-row.playing .track-num { color: var(--green); }
+
+.track-num {
+  font-size: 16px;
+  color: var(--text2);
+  text-align: center;
+}
+
+.track-play-hover {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.track-info { display: flex; align-items: center; gap: 14px; }
+
+.track-thumb {
+  width: 44px; height: 44px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+.track-thumb-inner {
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, var(--bg3), var(--bg4));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.track-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  position: absolute; inset: 0;
+}
+
+.track-thumb input[type="file"] {
+  position: absolute; inset: 0;
+  opacity: 0; cursor: pointer;
+  width: 100%; height: 100%;
+}
+
+.track-texts { flex: 1; min-width: 0; }
+
+.track-name {
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 2px;
+}
+
+.track-name.playing { color: var(--green); }
+
+.track-artist {
+  font-size: 13px;
+  color: var(--text2);
+}
+
+.track-album {
+  font-size: 13px;
+  color: var(--text2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-duration {
+  font-size: 13px;
+  color: var(--text2);
+  text-align: right;
+}
+
+/* ── CARDS ── */
+.cards-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: var(--bg2);
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+  position: relative;
+}
+
+.card:hover { background: var(--bg3); }
+
+.card:hover .card-play {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 14px;
+  position: relative;
+  background: linear-gradient(135deg, var(--bg3), var(--bg4));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+}
+
+.card-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  position: absolute; inset: 0;
+  border-radius: 6px;
+}
+
+.card-img input[type="file"] {
+  position: absolute; inset: 0;
+  opacity: 0; cursor: pointer;
+  width: 100%; height: 100%;
+}
+
+.card-play {
+  position: absolute;
+  bottom: 12px; right: 12px;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--green);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  color: #000;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.2s;
+  pointer-events: none;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.card-name {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-desc {
+  font-size: 12px;
+  color: var(--text2);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── FEATURED CARD ── */
+.featured-card {
+  background: linear-gradient(135deg, #1a3a2a, #0d2618);
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 32px;
+  border: 1px solid rgba(29,185,84,0.15);
+}
+
+.featured-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 80% 50%, rgba(29,185,84,0.1), transparent 70%);
+}
+
+.featured-photo {
+  width: 110px; height: 110px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  background: var(--bg3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 40px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+.featured-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  position: absolute; inset: 0;
+}
+
+.featured-photo input[type="file"] {
+  position: absolute; inset: 0;
+  opacity: 0; cursor: pointer;
+}
+
+.featured-content { position: relative; z-index: 1; }
+
+.featured-tag {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--green);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.featured-title {
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+}
+
+.featured-text {
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.6;
+  max-width: 400px;
+}
+
+/* ── PLAYER ── */
+.player {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 80px;
+  background: #181818;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  z-index: 200;
+  gap: 16px;
+}
+
+.player-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 280px;
+  flex-shrink: 0;
+}
+
+.player-thumb {
+  width: 52px; height: 52px;
+  border-radius: 4px;
+  background: linear-gradient(135deg, var(--green), #0d6e35);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.player-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  position: absolute; inset: 0;
+}
+
+.player-song { font-size: 13px; font-weight: 700; margin-bottom: 2px; }
+.player-artist { font-size: 11px; color: var(--text2); }
+
+.player-liked {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--green);
+  transition: transform 0.15s;
+  margin-left: 4px;
+}
+.player-liked:hover { transform: scale(1.2); }
+
+.player-controls {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.player-btns {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.ctrl-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--text2);
+  transition: color 0.15s;
+  display: flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px;
+}
+
+.ctrl-btn:hover { color: var(--text); }
+.ctrl-btn.green { color: var(--green); }
+
+.play-main {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--text);
+  border: none;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px;
+  color: #000;
+  transition: all 0.15s;
+}
+.play-main:hover { transform: scale(1.08); }
+
+.progress-bar {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  color: var(--text2);
+}
+
+.progress-track {
+  flex: 1;
+  height: 4px;
+  background: var(--bg4);
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: var(--text);
+  transition: width 0.1s;
+}
+
+.progress-track:hover .progress-fill { background: var(--green); }
+
+.player-right {
+  width: 220px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.vol-icon { font-size: 16px; color: var(--text2); }
+
+.vol-bar {
+  width: 80px; height: 4px;
+  background: var(--bg4);
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.vol-fill {
+  height: 100%;
+  width: 70%;
+  background: var(--text);
+  border-radius: 2px;
+}
+
+.vol-bar:hover .vol-fill { background: var(--green); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in { animation: fadeIn 0.5s ease forwards; }
+
+.hero { animation: fadeIn 0.6s ease; }
+.controls-bar { animation: fadeIn 0.6s 0.1s ease both; }
+.content-section { animation: fadeIn 0.5s 0.2s ease both; }
+
+/* green eq bars for playing state */
+@keyframes eq1 { 0%,100%{height:6px} 50%{height:14px} }
+@keyframes eq2 { 0%,100%{height:14px} 50%{height:4px} }
+@keyframes eq3 { 0%,100%{height:8px} 50%{height:16px} }
+
+.eq-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 16px;
+}
+.eq-bar {
+  width: 3px;
+  background: var(--green);
+  border-radius: 1px;
+}
+.eq-bar:nth-child(1) { animation: eq1 0.8s ease-in-out infinite; }
+.eq-bar:nth-child(2) { animation: eq2 0.8s 0.2s ease-in-out infinite; }
+.eq-bar:nth-child(3) { animation: eq3 0.8s 0.4s ease-in-out infinite; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; }
+  .track-header, .track-row { grid-template-columns: 40px 1fr 80px; }
+  .track-album { display: none; }
+  .player-right { display: none; }
+  .player-info { width: auto; }
+}
+
+@media (max-width: 600px) {
+  .hero { flex-direction: column; align-items: flex-start; padding: 40px 20px 24px; }
+  .hero-cover { width: 140px; height: 140px; }
+  .hero-title { font-size: 36px; }
+  .content-section { padding: 0 16px 32px; }
+  .controls-bar { padding: 16px 16px 12px; }
+  .cards-row { grid-template-columns: repeat(2, 1fr); }
+  .player-info .player-song { font-size: 11px; }
+}
+
+/* Estilo do Modal (A "nova página") */
+#modal-container {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(15px);
+  z-index: 1000;
+  display: none; /* Escondido por padrão */
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+#modal-content {
+  background: linear-gradient(180deg, #282828 0%, #121212 100%);
+  width: 100%;
+  max-width: 600px;
+  border-radius: 12px;
+  padding: 40px;
+  position: relative;
+  color: white;
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--text2);
+}
+
+#modal-img-display {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 20px;
+  border-radius: 8px;
+  background: var(--bg3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+#modal-img-display img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <div class="logo">
+    <div class="logo-icon">💚</div>
+    <span class="logo-text">Loveify</span>
+  </div>
+
+  <div class="nav-section">
+    <a class="nav-item active" href="#">
+      <div class="nav-icon green" style="font-size:13px;">🏠</div>
+      Início
+    </a>
+    <a class="nav-item" href="#memorias">
+      <div class="nav-icon pink" style="font-size:13px;">🔍</div>
+      Memórias
+    </a>
+  </div>
+
+  <div class="nav-section" style="flex:1; overflow:hidden; display:flex; flex-direction:column;">
+    <div class="nav-item" style="margin-bottom:4px;">
+      <div class="nav-icon" style="font-size:13px;">📚</div>
+      Biblioteca
+    </div>
+
+    <div class="sidebar-playlist-label">Playlists</div>
+    <div style="overflow-y:auto; flex:1;">
+      <div class="playlist-item active">Nossas Músicas 💚</div>
+      <div class="playlist-item">3 Meses Juntos 🌸</div>
+      <div class="playlist-item">Momentos Favoritos</div>
+      <div class="playlist-item">Para sempre ❤️</div>
+      <div class="playlist-item">Jantares especiais</div>
+    </div>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="nav-arrows">
+      <button class="arrow-btn">‹</button>
+      <button class="arrow-btn">›</button>
+    </div>
+    <div class="user-pill">
+      <div class="user-avatar">G</div>
+      Gabriel
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-cover" id="heroCover">
+  <span id="heroCoverEmoji" style="display:none;">💚</span>
+  
+  <div class="cover-hint">📸 Trocar capa</div>
+  
+  <img id="heroCoverImg" src="img/capa.jpeg" style="display:block;" alt="capa"/>
+  
+  <input type="file" accept="image/*" onchange="loadHeroCover(this)"/>
+</div>
+    <div class="hero-meta">
+      <div class="hero-type">Playlist</div>
+      <h1 class="hero-title">Para o meu<br>Amor 💚</h1>
+      <p class="hero-desc">Ao clicar nas músicas com títulos de memórias, você será levado a uma canção que representa a nossa história. Você é minha música favorita. 🌿</p>
+      <div class="hero-stats">
+        <span class="highlight">LoveifyApp</span>
+        <span class="dot">•</span>
+        <span id="likes-count">3 curtidas</span>
+        <span class="dot">•</span>
+        <span id="track-count">8 memórias</span>
+        <span class="dot">•</span>
+        <span id="total-time">3 meses, 0 arrependimentos</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTROLS -->
+  <div class="controls-bar">
+    <button class="play-btn" id="mainPlayBtn" onclick="togglePlay()">▶</button>
+    <button class="heart-btn" onclick="this.style.transform='scale(1.3)'; setTimeout(()=>this.style.transform='scale(1)',200)">♥</button>
+    <button class="more-btn">•••</button>
+  </div>
+
+  <!-- TRACK LIST -->
+  <div class="content-section" id="memorias">
+    <div class="track-header">
+      <div style="text-align:center">#</div>
+      <div>Memória</div>
+      <div>Álbum</div>
+      <div style="text-align:right">⏱</div>
+    </div>
+
+    <!-- Tracks -->
+    <div id="trackList">
+      <!-- Generated by JS -->
+    </div>
+  </div>
+
+  <!-- FEATURED MESSAGE -->
+  <div class="content-section">
+    <div class="featured-card">
+      <div class="featured-photo" id="featPhoto">
+        <span>🌿</span>
+        <img id="featPhotoImg" style="display:none;" alt="foto"/>
+        <input type="file" accept="image/*" onchange="loadFeatPhoto(this)"/>
+      </div>
+      <div class="featured-content">
+        <div class="featured-tag">✦ Mensagem especial</div>
+        <div class="featured-title">Você mudou tudo.</div>
+        <div class="featured-text">
+          Antes de você, eu ouvia as músicas. Depois de você, eu as sinto. Cada detalhe do nosso tempo junto é uma faixa que quero colocar no repeat pra sempre. Felizes 3 meses, meu amor. 🌱
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARDS -->
+  <div class="content-section">
+    <div class="section-header">
+      <h2 class="section-title">Nossos Momentos</h2>
+      <span class="see-all">Ver tudo</span>
+    </div>
+    <div class="cards-row" id="cardsRow">
+      <!-- Generated by JS -->
+    </div>
+  </div>
+
+</div>
+
+<!-- PLAYER -->
+<div class="player">
+  <div class="player-info">
+    <div class="player-thumb" id="playerThumb">
+      <img id="playerThumbImg" style="display:none;" alt=""/>
+      <span id="playerThumbEmoji">💚</span>
+    </div>
+    <div>
+      <div class="player-song" id="playerSong">Nosso Começo</div>
+      <div class="player-artist" id="playerArtist">Gabriel & Eu</div>
+    </div>
+    <button class="player-liked">♥</button>
+  </div>
+
+  <div class="player-controls">
+    <div class="player-btns">
+      <button class="ctrl-btn green" title="Shuffle">⇄</button>
+      <button class="ctrl-btn" onclick="prevTrack()">⏮</button>
+      <button class="play-main" id="playerPlayBtn" onclick="togglePlay()">▶</button>
+      <button class="ctrl-btn" onclick="nextTrack()">⏭</button>
+      <button class="ctrl-btn green" title="Repeat">↻</button>
+    </div>
+    <div class="progress-bar">
+      <span id="prog-current">0:00</span>
+      <div class="progress-track" onclick="seekProgress(event, this)">
+        <div class="progress-fill" id="progFill" style="width:0%"></div>
+      </div>
+      <span id="prog-total">3:27</span>
+    </div>
+  </div>
+
+  <div class="player-right">
+    <span class="vol-icon">🔊</span>
+    <div class="vol-bar"><div class="vol-fill"></div></div>
+  </div>
+</div>
+<div id="modal-container" onclick="closePage()">
+
+<script>
+const tracks = [
+  { num:1, name:"Nosso Começo", artist:"A droga do amor", album:"2022", duration:"3:27", emoji:"🌱", foto: "img/inicio.jpeg", playing:true, url: "https://www.youtube.com/watch?v=WRxwtV_x8nM&list=RDWRxwtV_x8nM&start_radio=1&pp=ygUQYSBkcm9nYSBkbyBhbW9yIKAHAQ%3D%3D", playing:true },
+  { num:2, name:"Tempo separados", artist:"Te esperando", album:"2023-2025", duration:"2:54", emoji:"😍", foto: "img/sad cat.jpg", playing:false, url: "https://www.youtube.com/watch?v=Z5pWz_OR5Sg&list=RDZ5pWz_OR5Sg&start_radio=1&pp=ygUMdGUgZXNwZXJhbmRvoAcB", playing:true },
+  { num:3, name:"pedido de namoro", artist:"Sofá breja netflix", album:"janeiro 2026", duration:"4:11", emoji:"🍷", foto: "img/foto8.jpeg", playing:false, url: "https://www.youtube.com/watch?v=8toOJb8xhB8&list=RD8toOJb8xhB8&start_radio=1&pp=ygUUc29mYSBicmVqYSBlIG5ldGZsaXigBwE%3D", playing:true },
+  { num:4, name:"o amor que sinto por ti", artist:"oceano", album:"2026", duration:"∞", emoji:"😂", foto: "img/foto5.jpeg", playing:false, url: "https://youtu.be/P-lxOj0XpEE?list=RDRSTIP4KL5Uc", playing:true },
+  { num:5, name:"Quando você cuida de mim", artist:"o jeito que você me olha", album:"Março 2026", duration:"5:02", emoji:"🫂", foto: "img/foto2.jpeg", playing:false, url: "https://www.youtube.com/watch?v=j_qOxgzsTy0&list=RDj_qOxgzsTy0&start_radio=1&pp=ygUZbyBqZWl0byBxdWUgdm9jw6ogbWUgb2xoYaAHAQ%3D%3D", playing:true },
+  { num:6, name:"nossa vibe", artist:"amor e fé", album:"Março 2026", duration:"3:44", emoji:"🎵", foto: "img/foto6.jpeg", playing:false, url: "https://youtu.be/iZq0u3quAqo?list=RDiZq0u3quAqo", playing:true },
+  { num:7, name:"Te amo", artist:"Pra você guardei o amor", album:"Todo dia", duration:"∞", emoji:"✨", foto: "img/foto7.jpeg", playing:false, url: "https://youtu.be/NM200mNbLP8?list=RDNM200mNbLP8", playing:true },
+  { num:8, name:"Três Meses de Você", artist:"Seu astral", album:"Abril 2026", duration:"♾️", emoji:"💚", foto: "img/foto3.jpeg", playing:false, url: "https://www.youtube.com/watch?v=SETK2maosQY&pp=ygUKc2V1IGFzdHJhbNIHCQnTCgGHKiGM7w%3D%3D", playing:true },
+];
+
+const cards = [
+  { 
+    name: "Janeiro", 
+    emoji: "🌱", 
+    desc: "O mês que mudou tudo...",
+    historia: "Aqui foi onde tudo recomeçou. Eu estava nervosa, mas seu sorriso facilitou tudo...",
+    musica: "música que representa nossa volta - O amor coloriu",
+    linkMusica: "https://www.youtube.com/watch?v=LwnnmhEPNuE&list=RDLwnnmhEPNuE&start_radio=1&pp=ygUObyBhbW9yIGNvbG9yaXWgBwE%3D",
+    foto: "img/janeiro.jpeg" // Deixe vazio para usar o upload ou coloque um link
+  },
+  { 
+    name: "Fevereiro", 
+    emoji: "🌸", 
+    desc: "E a distância mais uma vez...",
+    historia: "Em fevereiro, a distância pegou a gente novamente. E a vontade de nos encontrar so aumentava...",
+    musica: "Música de Fevereiro - Ao vivo e as cores",
+    linkMusica: "https://www.youtube.com/watch?v=iyI9RMkEzbQ&list=RDiyI9RMkEzbQ&start_radio=1&pp=ygUZYSB0ZWxhIGZyaWEgZGVzc2UgY2VsdWxhcqAHAQ%3D%3D",
+    foto: "img/foto11.jpeg" 
+  },
+
+  { 
+    name: "Março", 
+    emoji: "🌸", 
+    desc: "E ai a distância acabou...",
+    historia: "E você com seu jeito aleatorio de ser, resolveu se mudar e ficar mais perto, eu amo esse seu jeito de fazer tudo pela gente.",
+    musica: "Música de Março - Partilhar",
+    linkMusica: "https://youtu.be/WkLpoUiasZ8?list=RDWkLpoUiasZ8",
+    foto: "img/foto10.jpeg" 
+  },
+
+  { 
+    name: "Abril", 
+    emoji: "🌸", 
+    desc: "Cada momento...",
+    historia: "E os momentos com você é incrivel, o jeito que cuida de mim, e está sempre presente, e pra falar a verdade eu amo esse seu grude",
+    musica: "sua musica escolhida - Quanto mais o tempo passa",
+    linkMusica: "https://youtu.be/NS9xi3JwJqc?list=RDNS9xi3JwJqc",
+    foto: "img/foto5.jpeg" 
+  },
+
+  
+  // Adicione os outros meses seguindo o mesmo padrão...
+];
+
+let currentTrack = 0;
+let isPlaying = false;
+let progress = 0;
+let progressTimer = null;
+
+function renderTracks() {
+  const list = document.getElementById('trackList');
+  list.innerHTML = tracks.map((t, i) => {
+    const hasPhoto = t.foto && t.foto !== "";
+    const imgStyle = hasPhoto ? 'display:block;' : 'display:none;';
+    const emojiStyle = hasPhoto ? 'display:none;' : 'display:flex;';
+
+    return `
+      <div class="track-row ${t.playing ? 'playing' : ''}" id="track-${i}">
+        <div class="track-num" onclick="selectTrack(${i})">
+          ${t.playing
+            ? `<div class="eq-bars"><div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div></div>`
+            : t.num
+          }
+        </div>
+        
+        <div class="track-info" onclick="playSpotify('${t.url}')">
+          <div class="track-thumb">
+            <div class="track-thumb-inner" style="${emojiStyle}">${t.emoji}</div>
+            <img src="${t.foto}" style="${imgStyle} width:100%; height:100%; object-fit:cover; position:absolute; inset:0;" alt=""/>
+          </div>
+          <div class="track-texts">
+            <div class="track-name ${t.playing ? 'playing' : ''}">${t.name}</div>
+            <div class="track-artist">${t.artist}</div>
+          </div>
+        </div>
+
+        <div class="track-album" onclick="selectTrack(${i})">${t.album}</div>
+        <div class="track-duration">${t.duration}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderCards() {
+  const row = document.getElementById('cardsRow');
+  row.innerHTML = cards.map((c, i) => {
+    // Verifica se existe foto definida no objeto
+    const hasPhoto = c.foto && c.foto !== "";
+    
+    return `
+      <div class="card" onclick="openPage('${c.name}', '${c.desc}', '${c.emoji}', 'cimgEl-${i}')">
+        <div class="card-img" id="cimg-${i}">
+          <span style="display: ${hasPhoto ? 'none' : 'block'}">${c.emoji}</span>
+          <img id="cimgEl-${i}" src="${c.foto}" style="display: ${hasPhoto ? 'block' : 'none'}" alt=""/>
+          
+          <div class="card-play">▶</div>
+        </div>
+        <div class="card-name">${c.name}</div>
+        <div class="card-desc">${c.desc}</div>
+      </div>
+    `;
+  }).join('');
+
+  // Torna a sidebar clicável também
+  const playlistItems = document.querySelectorAll('.playlist-item');
+  playlistItems.forEach(item => {
+    item.onclick = () => {
+      // Busca nos cards se existe um com o mesmo nome
+      const cardData = cards.find(c => item.innerText.includes(c.name.replace(' 💚', '')));
+      if (cardData) {
+        openPage(cardData.name, cardData.desc, cardData.emoji);
+      } else {
+        openPage(item.innerText, "Detalhes sobre " + item.innerText, "✨");
+      }
+    };
+  });
+}
+
+function openPage(title, desc, emoji, imgId) {
+    // Busca os dados completos do card pelo título
+    const data = cards.find(c => c.name === title);
+    
+    document.getElementById('modal-title').innerText = title;
+    
+    // Preenche a história e música (usa um texto padrão se estiver vazio)
+    document.getElementById('modal-historia').innerText = data?.historia || "Nossa história desse mês foi incrível...";
+    document.getElementById('modal-musica').innerText = data?.musica || "Sua música favorita - Gabriel";
+    
+    const musicaElement = document.getElementById('modal-musica');
+    if (data?.linkMusica) {
+        musicaElement.innerHTML = `<a href="${data.linkMusica}" target="_blank" style="color: white; text-decoration: none;">▶ ${data.musica}</a>`;
+    } else {
+        musicaElement.innerText = data?.musica || "Música não definida.";
+    }
+    
+    const display = document.getElementById('modal-img-display');
+    const sourceImg = document.getElementById(imgId);
+
+    if (sourceImg && sourceImg.src && sourceImg.style.display !== 'none') {
+        display.innerHTML = `<img src="${sourceImg.src}" style="width:100%; height:100%; object-fit:cover;">`;
+    } else {
+        display.innerHTML = emoji;
+    }
+
+    document.getElementById('modal-container').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+function closePage() {
+  document.getElementById('modal-container').style.display = 'none';
+}
+
+function selectTrack(idx) {
+  tracks.forEach((t, i) => t.playing = (i === idx));
+  currentTrack = idx;
+  isPlaying = true;
+  progress = 0;
+
+  document.getElementById('playerSong').textContent = tracks[idx].name;
+  document.getElementById('playerArtist').textContent = tracks[idx].artist;
+
+  // --- NOVA LÓGICA PARA A FOTO NO PLAYER ---
+  const playerImg = document.getElementById('playerThumbImg');
+  const playerEmoji = document.getElementById('playerThumbEmoji');
+
+  if (tracks[idx].foto && tracks[idx].foto !== "") {
+    playerImg.src = tracks[idx].foto;
+    playerImg.style.display = 'block';
+    playerEmoji.style.display = 'none';
+  } else {
+    playerImg.style.display = 'none';
+    playerEmoji.style.display = 'block';
+    playerEmoji.textContent = tracks[idx].emoji;
+  }
+  // -----------------------------------------
+
+  document.getElementById('mainPlayBtn').textContent = '⏸';
+  document.getElementById('playerPlayBtn').textContent = '⏸';
+  renderTracks();
+  startProgress();
+}
+
+function togglePlay() {
+  isPlaying = !isPlaying;
+  const icon = isPlaying ? '⏸' : '▶';
+  document.getElementById('mainPlayBtn').textContent = icon;
+  document.getElementById('playerPlayBtn').textContent = icon;
+  if (isPlaying) startProgress(); else stopProgress();
+}
+
+function nextTrack() { selectTrack((currentTrack+1) % tracks.length); }
+function prevTrack() { selectTrack((currentTrack-1+tracks.length) % tracks.length); }
+
+function startProgress() {
+  stopProgress();
+  progressTimer = setInterval(() => {
+    progress = Math.min(progress + 0.2, 100);
+    document.getElementById('progFill').style.width = progress + '%';
+    const secs = Math.round(progress / 100 * 207);
+    const m = Math.floor(secs/60), s = secs%60;
+    document.getElementById('prog-current').textContent = m+':'+(s<10?'0':'')+s;
+    if (progress >= 100) { progress=0; nextTrack(); }
+  }, 200);
+}
+
+function stopProgress() {
+  if (progressTimer) clearInterval(progressTimer);
+}
+
+function seekProgress(e, el) {
+  const rect = el.getBoundingClientRect();
+  progress = ((e.clientX - rect.left) / rect.width) * 100;
+  document.getElementById('progFill').style.width = progress + '%';
+}
+
+function loadHeroCover(input) {
+  const file = input.files[0]; if (!file) return;
+  const r = new FileReader();
+  r.onload = e => {
+    document.getElementById('heroCoverEmoji').style.display = 'none';
+    const img = document.getElementById('heroCoverImg');
+    img.src = e.target.result; img.style.display = 'block';
+  };
+  r.readAsDataURL(file);
+}
+
+function loadFeatPhoto(input) {
+  const file = input.files[0]; if (!file) return;
+  const r = new FileReader();
+  r.onload = e => {
+    document.querySelector('#featPhoto span').style.display = 'none';
+    const img = document.getElementById('featPhotoImg');
+    img.src = e.target.result; img.style.display = 'block';
+  };
+  r.readAsDataURL(file);
+}
+
+function loadTrackImg(idx, input) {
+  const file = input.files[0]; if (!file) return;
+  const r = new FileReader();
+  r.onload = e => {
+    document.getElementById('tthumb-'+idx).style.display = 'none';
+    const img = document.getElementById('timg-'+idx);
+    img.src = e.target.result; img.style.display = 'block';
+  };
+  r.readAsDataURL(file);
+}
+
+function loadCardImg(idx, input) {
+  const file = input.files[0]; if (!file) return;
+  const r = new FileReader();
+  r.onload = e => {
+    document.querySelector('#cimg-'+idx+' span').style.display = 'none';
+    const img = document.getElementById('cimgEl-'+idx);
+    img.src = e.target.result; img.style.display = 'block';
+  };
+  r.readAsDataURL(file);
+}
+
+renderTracks();
+renderCards();
+
+function playSpotify(url) {
+  if (url) {
+    window.open(url, '_blank');
+  }
+}
+</script>
+<div id="modal-content" onclick="event.stopPropagation()" style="background: linear-gradient(180deg, #282828 0%, #121212 100%); width: 90%; max-width: 800px; border-radius: 15px; padding: 30px; position: relative; color: white; overflow-y: auto; max-height: 90vh;">
+    <span onclick="closePage()" style="position: absolute; top: 15px; right: 20px; font-size: 30px; cursor: pointer; color: #b3b3b3;">&times;</span>
+    
+    <div style="display: flex; gap: 20px; align-items: flex-end; margin-bottom: 30px; flex-wrap: wrap;">
+        <div id="modal-img-display" style="width: 180px; height: 180px; border-radius: 8px; background: #333; display: flex; align-items: center; justify-content: center; font-size: 60px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5);"></div>
+        <div>
+            <p style="text-transform: uppercase; font-size: 12px; font-weight: 700; margin-bottom: 5px;">Memória Especial</p>
+            <h2 id="modal-title" style="font-size: clamp(24px, 5vw, 48px); font-weight: 900;"></h2>
+        </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; text-align: left;">
+        
+        <div>
+            <h3 style="color: var(--green); margin-bottom: 10px;">📖 Nossa História</h3>
+            <p id="modal-historia" style="color: #b3b3b3; line-height: 1.6;"></p>
+        </div>
+
+        <div>
+            <h3 style="color: var(--green); margin-bottom: 10px;">🎵 Trilha Sonora</h3>
+            <div style="background: #282828; padding: 15px; border-radius: 8px; display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 24px;">🎧</span>
+                <span id="modal-musica" style="font-weight: 700;"></span>
+            </div>
+            
+            <div style="margin-top: 20px;">
+                <h3 style="color: var(--green); margin-bottom: 10px;">📸 Registro</h3>
+                <p style="font-size: 13px; color: #b3b3b3;">Este momento ficou guardado para sempre.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
